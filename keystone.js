@@ -13,7 +13,7 @@ keystone.init({
 	'view engine': 'pug',
 
 	'auto update': true,
-	'mongo': process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/keystone-demo',
+	'mongo': (process.env.MONGODB_ADDON_USER && process.env.MONGODB_ADDON_PASSWORD && process.env.MONGODB_ADDON_HOST && process.env.MONGODB_ADDON_DB) ? 'mongodb://' + process.env.MONGODB_ADDON_USER + ':' + process.env.MONGODB_ADDON_PASSWORD + '@' + process.env.MONGODB_ADDON_HOST + '/' + process.env.MONGODB_ADDON_DB : process.env.MONGO_URI || process.env.MONGOLAB_URI || 'mongodb://localhost/keystone-demo',
 	'cloudinary config': 'cloudinary://333779167276662:_8jbSi9FB3sWYrfimcl8VKh34rI@keystone-demo',
 
 	'session': true,
